@@ -1,0 +1,31 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+.calculator{
+    display: flex;
+    flex-wrap: wrap;
+    width: 365.6px;
+    height: 650px;
+    background-color: black;
+}
+
+.display{
+    background-color: red;
+    height: 200px;
+    width: 365.6px;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons button{
+    color: rgb(255, 255, 255);
+    height: 70px;
+    width: 90px;
+    background-color: grey;
+    border-radius: 10px;
+}
