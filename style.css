@@ -4,6 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: 'Nunito', sans-serif;
 }
 
 .calculator {
@@ -35,6 +36,7 @@ body {
     font-size: 70px;
     height: 100px;
     width: 100%;
+    font-family: 'Nunito', sans-serif;
 }
 
 .wrapper {
@@ -52,6 +54,7 @@ body {
 }
 
 .row button {
+    font-family: 'Nunito', sans-serif;
     color: white;
     height: 80px;
     width: 80px;
