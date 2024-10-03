@@ -31,10 +31,28 @@ function operate(operator,num1,num2){
     }
 }
 
-function populate(){
+function populate(contenido){
+    const display = document.querySelector(".display input");
 
+    display.value = contenido;
+}
+
+function listeners(){
+    const buttons = document.querySelectorAll(".wrapper button");
+    const arrayButtons = Array.from(buttons);
+    console.log(arrayButtons);
+
+    arrayButtons.forEach((button) => 
+        button.addEventListener('click', () => {
+            console.log(button.textContent);
+            populate(button.textContent);
+        })
+    );
 }
 
 let firstNumber;
 let operator;
 let secondNumber;
+let displayValue;
+
+listeners();
