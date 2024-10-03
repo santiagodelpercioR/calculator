@@ -16,25 +16,29 @@ function divide(array){
 
 function operate(operator,num1,num2){
     switch(operator){
-        case 'suma':
+        case '+':
             return sum([num1,num2]);
             break;
-        case 'resta':
+        case '-':
             return substract([num1,num2]);
             break;
-        case 'multiply':
+        case 'x':
             return multiply([num1,num2]);
             break;
-        case 'divide':
+        case '/':
             return divide([num1,num2]);
             break;
     }
 }
 
 function populate(contenido){
-    const display = document.querySelector(".display input");
-
-    display.value = contenido;
+    if(contenido.classList.contains("equal")){
+        console.log("operador");
+        display.value = calculate(display.value);
+    }
+    else{
+        display.value = display.value + contenido.textContent;
+    }
 }
 
 function listeners(){
@@ -44,15 +48,46 @@ function listeners(){
 
     arrayButtons.forEach((button) => 
         button.addEventListener('click', () => {
-            console.log(button.textContent);
-            populate(button.textContent);
+            populate(button);
         })
     );
+}
+
+function calculate(value){
+    console.log(value);
+    console.log(typeof(value));
+    const myArray = value.split(""); //paso el string a un array . 9x6 = [9, x, 6]
+    const index = indexOperator(myArray); //busco el operador. index 1.
+    let operator = myArray[index];
+    let n1 = arrayToNum(myArray.slice(0, index));
+    let n2 = arrayToNum(myArray.slice(index+1));
+    console.log(n1);
+    console.log(n2);
+    return operate(operator,n1,n2);
+}
+
+function arrayToNum(array){
+    return parseInt(array.join('',10));
+}
+function indexOperator(array){
+
+    if(array.indexOf('x') > 0){
+        return array.indexOf('x');
+    }
+    else if (array.indexOf('/') > 0){
+        return array.indexOf('/');
+    }
+    else if (array.indexOf('-') > 0){
+        return array.indexOf('-');
+    }
+    else if (array.indexOf('+') > 0){
+        return array.indexOf('+');
+    }
 }
 
 let firstNumber;
 let operator;
 let secondNumber;
-let displayValue;
+const display = document.querySelector(".display input");
 
 listeners();
