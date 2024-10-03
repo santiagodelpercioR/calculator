@@ -36,6 +36,9 @@ function populate(contenido){
         console.log("operador");
         display.value = calculate(display.value);
     }
+    else if (contenido.classList.contains("delete")){
+        display.value = '';
+    }
     else{
         display.value = display.value + contenido.textContent;
     }
