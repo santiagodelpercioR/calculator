@@ -54,6 +54,11 @@ function populate(button){ // Se clickeo un boton
         firstNumber = 'no';
         secondNumber = 'no';
     }
+    else if (button.classList.contains("negative")){
+        let float = parseFloat(pantalla.value);
+        console.log(-Math.sign(float));
+        pantalla.value = -Math.sign(float) * float;
+    }
 }
 
 function listeners(){
