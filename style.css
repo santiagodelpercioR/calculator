@@ -46,6 +46,10 @@ body {
     padding-right: 10px;
 }
 
+.minidisplay input {
+    color: rgb(119, 119, 119);
+}
+
 .display {
     display: flex;
     align-items: flex-end;

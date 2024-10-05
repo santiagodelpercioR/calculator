@@ -40,13 +40,24 @@ function populate(button){ // Se clickeo un boton
             firstNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
             pantalla.value = ''; //borro todo lo que esta en el display
             operator = button.textContent; //guardo el operador en una variable OPERADOR
-            //me pongo a escuchar esperando un NUMERO2 (activo una flag). eso me lo va a indicar firstNumber
+            miniPantalla.value = firstNumber;
+        }
+        else if (firstNumber !== 'no'){
+            secondNumber = parseFloat(pantalla.value);
+            let resultado = operate(operator, firstNumber, secondNumber);
+            operator = button.textContent;
+            pantalla.value = resultado;
+            firstNumber = resultado;
+            secondNumber = 'no';
+            pantalla.value = '';
+            miniPantalla.value = firstNumber;
         }
     }
     else if (button.classList.contains("equal")){
         if(firstNumber !== 'no' ){                  //si tengo first number y no tengo secondNumber
             secondNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
             pantalla.value = operate(operator, firstNumber, secondNumber);//display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
+            miniPantalla.value = pantalla.value;
         }
     }
     else if (button.classList.contains("delete")){
@@ -110,6 +121,8 @@ let operator;
 let secondNumber = 'no';
 const pantalla = document.querySelector(".display input");
 pantalla.value = '';
+const miniPantalla = document.querySelector(".minidisplay input");
+miniPantalla.value = '☆';
 
 listeners();
 
