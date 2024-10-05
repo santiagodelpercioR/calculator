@@ -43,29 +43,35 @@ function calculate(value){
 }
 
 function populate(button){ // Se clickeo un boton
-    console.log(pantalla.value);
-    console.log("clickeo " + button.textContent);
-    if(button.classList.contains("number-button")){                       //Si es un digito sigo acumulando digitos en la pantalla
-        if(firstNumber === 'no'){                                         //Si es el primer numero lo acumulo ahi y en la pantalla
-            pantalla.value = pantalla.value + button.textContent;
+    /*
+    // Botones posibles: numeros, operadores, igual y delete.
+    // Si (es un digito){
+        Lo acumulo en el display
+        sigo
+    }
+    else if (es un operador (* / + -)){
+        si (no tengo guardado un PRIMERNUMERO){
+            agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
+            borro todo lo que esta en el display
+            guardo el operador en una variable OPERADOR
+            me pongo a escuchar esperando un NUMERO2 (activo una flag)
         }
-        if(secondNumber === 'no' && !(firstNumber === 'no')){                                   //Si es el segundo numero lo acumulo ahi
-            pantalla.value = '';
-            pantalla.value = pantalla.value + button.textContent;
-            secondNumber = pantalla.value;
-        }                   
+        else if (si aprieto un operador y ya tengo un PRIMERNUMERO){
+            no hago nada
+        }
     }
-    else if(button.classList.contains("delete")){                         // Si es delete, limpio la pantalla
-        pantalla.value = '';
-        firstNumber = 'no';
-        secondNumber = 'no';
-        operator = 'no'                                           
+    else if (es el boton igual){
+        if (tengo PRIMERNUMERO y no tengo SEGUNDONUMERO (es decir, si la flag de esperar activamente el NUMERO2 esta activada)){
+            agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
+            display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
+        }
+    
     }
-    else if (button.classList.contains("operator-button")){
-            firstNumber = pantalla.value;
-            operator = button.textContent;
-            
-    }
+    else if (es el boton delete){
+        display.value = '';
+        primernumero = 'no';
+        segundonumero = 'no';
+    }*/
 }
 
 function listeners(){
