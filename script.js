@@ -30,48 +30,34 @@ function operate(operator,num1,num2){
             break;
     }
 }
-function calculate(value){
-    console.log(value);
-    console.log(firstNumber + ' ' + secondNumber);
-    
-    let operator = myArray[index];
-    let n1 = arrayToNum(myArray.slice(0, index));
-    let n2 = arrayToNum(myArray.slice(index+1));
-    console.log(n1);
-    console.log(n2);
-    return operate(operator,n1,n2);
-}
 
 function populate(button){ // Se clickeo un boton
-    /*
+    
     // Botones posibles: numeros, operadores, igual y delete.
     // Si (es un digito){
-        Lo acumulo en el display
-        sigo
+    if (button.classList.contains("number-button")){
+        pantalla.value = pantalla.value + button.textContent;
     }
-    else if (es un operador (* / + -)){
-        si (no tengo guardado un PRIMERNUMERO){
-            agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
-            borro todo lo que esta en el display
-            guardo el operador en una variable OPERADOR
-            me pongo a escuchar esperando un NUMERO2 (activo una flag)
+    else if (button.classList.contains("operator-button")){
+        if(firstNumber === 'no'){           // no tengo guardado un primer numero
+            firstNumber = parseInt(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
+            pantalla.value = ''; //borro todo lo que esta en el display
+            operator = button.textContent; //guardo el operador en una variable OPERADOR
+            //me pongo a escuchar esperando un NUMERO2 (activo una flag). eso me lo va a indicar firstNumber
         }
-        else if (si aprieto un operador y ya tengo un PRIMERNUMERO){
-            no hago nada
+        // si ya hay algo en firstNumber no hago nada. 
+    }
+    else if (button.classList.contains("equal")){
+        if(firstNumber !== 'no' ){                  //si tengo first number y no tengo secondNumber
+            secondNumber = parseInt(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
+            pantalla.value = operate(operator, firstNumber, secondNumber);//display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
         }
     }
-    else if (es el boton igual){
-        if (tengo PRIMERNUMERO y no tengo SEGUNDONUMERO (es decir, si la flag de esperar activamente el NUMERO2 esta activada)){
-            agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
-            display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
-        }
-    
+    else if (button.classList.contains("delete")){
+        pantalla.value = '';
+        firstNumber = 'no';
+        secondNumber = 'no';
     }
-    else if (es el boton delete){
-        display.value = '';
-        primernumero = 'no';
-        segundonumero = 'no';
-    }*/
 }
 
 function listeners(){
@@ -106,7 +92,7 @@ function indexOperator(array){
 }
 
 let firstNumber = 'no';
-let operator = 'no';
+let operator;
 let secondNumber = 'no';
 const pantalla = document.querySelector(".display input");
 pantalla.value = '';
