@@ -82,7 +82,7 @@ button:active {
     color: black;
 }
 
-.operator-button {
+.operator-button, .equal {
     background-color: #fe9505;
     color: white;
 }

@@ -30,17 +30,41 @@ function operate(operator,num1,num2){
             break;
     }
 }
+function calculate(value){
+    console.log(value);
+    console.log(firstNumber + ' ' + secondNumber);
+    
+    let operator = myArray[index];
+    let n1 = arrayToNum(myArray.slice(0, index));
+    let n2 = arrayToNum(myArray.slice(index+1));
+    console.log(n1);
+    console.log(n2);
+    return operate(operator,n1,n2);
+}
 
-function populate(contenido){
-    if(contenido.classList.contains("equal")){
-        console.log("operador");
-        display.value = calculate(display.value);
+function populate(button){ // Se clickeo un boton
+    console.log(pantalla.value);
+    console.log("clickeo " + button.textContent);
+    if(button.classList.contains("number-button")){                       //Si es un digito sigo acumulando digitos en la pantalla
+        if(firstNumber === 'no'){                                         //Si es el primer numero lo acumulo ahi y en la pantalla
+            pantalla.value = pantalla.value + button.textContent;
+        }
+        if(secondNumber === 'no' && !(firstNumber === 'no')){                                   //Si es el segundo numero lo acumulo ahi
+            pantalla.value = '';
+            pantalla.value = pantalla.value + button.textContent;
+            secondNumber = pantalla.value;
+        }                   
     }
-    else if (contenido.classList.contains("delete")){
-        display.value = '';
+    else if(button.classList.contains("delete")){                         // Si es delete, limpio la pantalla
+        pantalla.value = '';
+        firstNumber = 'no';
+        secondNumber = 'no';
+        operator = 'no'                                           
     }
-    else{
-        display.value = display.value + contenido.textContent;
+    else if (button.classList.contains("operator-button")){
+            firstNumber = pantalla.value;
+            operator = button.textContent;
+            
     }
 }
 
@@ -54,19 +78,6 @@ function listeners(){
             populate(button);
         })
     );
-}
-
-function calculate(value){
-    console.log(value);
-    console.log(typeof(value));
-    const myArray = value.split(""); //paso el string a un array . 9x6 = [9, x, 6]
-    const index = indexOperator(myArray); //busco el operador. index 1.
-    let operator = myArray[index];
-    let n1 = arrayToNum(myArray.slice(0, index));
-    let n2 = arrayToNum(myArray.slice(index+1));
-    console.log(n1);
-    console.log(n2);
-    return operate(operator,n1,n2);
 }
 
 function arrayToNum(array){
@@ -88,9 +99,10 @@ function indexOperator(array){
     }
 }
 
-let firstNumber;
-let operator;
-let secondNumber;
-const display = document.querySelector(".display input");
+let firstNumber = 'no';
+let operator = 'no';
+let secondNumber = 'no';
+const pantalla = document.querySelector(".display input");
+pantalla.value = '';
 
 listeners();
