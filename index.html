@@ -3,14 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Calculadora</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="images/Calculator_512.webp">
 </head>
 <body>
+    <div class="links-estilos">
+        <a href="#" onclick="changeCSS('style.css', 0);">STYLE 1</a> 
+        <a href="#" onclick="changeCSS('style2.css', 0);">STYLE 2</a>
+    </div>
     <div class="calculator">
-        <div class="display"><input type="text" value="" disabled></div>
+        <div class="minidisplay"><input type="text" value="☆" disabled></div>
+        <div class="display"><input type="text" value="500x2133" disabled></div>
         <div class="wrapper">
             <div class="row">
                 <button class="light-button delete">C</button>
