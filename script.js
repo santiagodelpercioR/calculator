@@ -15,20 +15,22 @@ function divide(array){
 }
 
 function operate(operator,num1,num2){
+    let resultado;
     switch(operator){
         case '+':
-            return sum([num1,num2]);
+            resultado = sum([num1,num2]);
             break;
         case '-':
-            return substract([num1,num2]);
+            resultado = substract([num1,num2]);
             break;
         case 'x':
-            return multiply([num1,num2]);
+            resultado = multiply([num1,num2]);
             break;
         case '/':
-            return divide([num1,num2]);
+            resultado = divide([num1,num2]);
             break;
     }
+    return parseFloat(resultado.toFixed(9));
 }
 
 function populate(button){ // Se clickeo un boton
