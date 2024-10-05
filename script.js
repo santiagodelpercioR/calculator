@@ -64,11 +64,18 @@ function populate(button){ // Se clickeo un boton
         pantalla.value = '';
         firstNumber = 'no';
         secondNumber = 'no';
+        miniPantalla.value = pantalla.value;
     }
     else if (button.classList.contains("negative")){
         let float = parseFloat(pantalla.value);
-        console.log(-Math.sign(float));
-        pantalla.value = -Math.sign(float) * float;
+        let signo = Math.sign(float)
+        if(signo > 0 ){
+            pantalla.value = -1 * signo * float;
+        }
+        else if (signo < 0){
+            pantalla.value = signo * float;
+        }
+        
     }
 }
 
