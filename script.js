@@ -32,24 +32,20 @@ function operate(operator,num1,num2){
 }
 
 function populate(button){ // Se clickeo un boton
-    
-    // Botones posibles: numeros, operadores, igual y delete.
-    // Si (es un digito){
     if (button.classList.contains("number-button")){
         pantalla.value = pantalla.value + button.textContent;
     }
     else if (button.classList.contains("operator-button")){
         if(firstNumber === 'no'){           // no tengo guardado un primer numero
-            firstNumber = parseInt(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
+            firstNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
             pantalla.value = ''; //borro todo lo que esta en el display
             operator = button.textContent; //guardo el operador en una variable OPERADOR
             //me pongo a escuchar esperando un NUMERO2 (activo una flag). eso me lo va a indicar firstNumber
         }
-        // si ya hay algo en firstNumber no hago nada. 
     }
     else if (button.classList.contains("equal")){
         if(firstNumber !== 'no' ){                  //si tengo first number y no tengo secondNumber
-            secondNumber = parseInt(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
+            secondNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
             pantalla.value = operate(operator, firstNumber, secondNumber);//display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
         }
     }
