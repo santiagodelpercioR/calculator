@@ -75,7 +75,6 @@ function populate(button){ // Se clickeo un boton
         else if (signo < 0){
             pantalla.value = signo * float;
         }
-        
     }
 }
 
