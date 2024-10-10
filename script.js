@@ -32,19 +32,24 @@ function operate(operator,num1,num2){
             break;
     }
     resultado = parseFloat(resultado);
-    console.log(resultado);
     return parseFloat(resultado.toFixed(9));
 }
 
 function populate(button){
+    console.log("resultado vale " + resultado);
     if (button.classList.contains("number-button")){
+        if(parseFloat(pantalla.value) == resultado){
+            console.log("IGUAL A RESULTADO");
+            pantalla.value = '';
+            firstNumber = 'no';
+            secondNumber = 'no';
+            miniPantalla.value = pantalla.value;
+        }
         pantalla.value = pantalla.value + button.textContent;
     }
     else if(button.classList.contains("operator-button")){
         if(firstNumber === 'no'){      //si no existe un firstNumber
             firstNumber = parseFloat(pantalla.value);
-            console.log('el primer numero es ' + firstNumber);
-            console.log('el operador es ' + button.textContent);
             operator = button.textContent;
             pantalla.value = '';
         }
@@ -54,7 +59,6 @@ function populate(button){
             operator = button.textContent;
             pantalla.value = resultado;
             firstNumber = resultado;
-            console.log('el resultado es ' + resultado);
             miniPantalla.value = resultado;
             pantalla.value = '';
         }
@@ -131,6 +135,7 @@ function changeCSS(cssFile, cssLinkIndex) {
 let firstNumber = 'no';
 let operator;
 let secondNumber;
+let resultado;
 const pantalla = document.querySelector(".display input");
 pantalla.value = '';
 const miniPantalla = document.querySelector(".minidisplay input");
