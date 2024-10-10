@@ -31,39 +31,40 @@ function operate(operator,num1,num2){
             resultado = divide(num1,num2);
             break;
     }
+    console.log(resultado);
     return parseFloat(resultado.toFixed(9));
 }
 
-/*function populate(button){ // Se clickeo un boton
+function populate(button){
     if (button.classList.contains("number-button")){
         pantalla.value = pantalla.value + button.textContent;
     }
-    else if (button.classList.contains("operator-button")){    //Operator : * / + -
-        if(operator == 0){           // Si no tengo un operador guardado
-            firstNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
-            pantalla.value = ''; //borro todo lo que esta en el display
-            operator = button.textContent; //guardo el operador en una variable OPERADOR
-            miniPantalla.value = firstNumber;
+    else if(button.classList.contains("operator-button")){
+        if(firstNumber === 'no'){      //si no existe un firstNumber
+            firstNumber = parseFloat(pantalla.value);
+            console.log('el primer numero es ' + firstNumber);
+            console.log('el operador es ' + button.textContent);
+            operator = button.textContent;
+            pantalla.value = '';
         }
-        else { // Si existe un operador guardado
+        else {                       //si existe un firstNumber
             secondNumber = parseFloat(pantalla.value);
-            console.log(secondNumber);
-            pantalla.value = operate(operator,firstNumber,secondNumber);
-            console.log(button.textContent);
-            operator = 0;
-            populate(button);
-            secondNumber = 'no';
-            miniPantalla.value = firstNumber;
+            resultado = operate(operator, firstNumber, secondNumber);
+            operator = button.textContent;
+            pantalla.value = resultado;
+            firstNumber = resultado;
+            console.log('el resultado es ' + resultado);
+            miniPantalla.value = resultado;
+            pantalla.value = '';
         }
     }
     else if (button.classList.contains("equal")){
-        if(firstNumber !== 'no' ){                  //si tengo first number y no tengo secondNumber
-            secondNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
-            pantalla.value = operate(operator, firstNumber, secondNumber);//display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
-            miniPantalla.value = pantalla.value;
-            firstNumber = pantalla.value;
-            secondNumber = 'no';
-        }
+        secondNumber = parseFloat(pantalla.value);
+        resultado = operate(operator, firstNumber, secondNumber);
+        operator = button.textContent;
+        pantalla.value = resultado;
+        firstNumber = resultado;
+        miniPantalla.value = resultado;
     }
     else if (button.classList.contains("delete")){
         pantalla.value = '';
@@ -81,10 +82,6 @@ function operate(operator,num1,num2){
             pantalla.value = signo * float;
         }
     }
-}*/
-
-function populate(button){
-
 }
 
 function listeners(){
@@ -130,7 +127,7 @@ function changeCSS(cssFile, cssLinkIndex) {
     document.getElementsByTagName("head").item(cssLinkIndex).replaceChild(newlink, oldlink);
 }
 
-let firstNumber;
+let firstNumber = 'no';
 let operator;
 let secondNumber;
 const pantalla = document.querySelector(".display input");
