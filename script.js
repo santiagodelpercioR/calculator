@@ -31,6 +31,7 @@ function operate(operator,num1,num2){
             resultado = divide(num1,num2);
             break;
     }
+    resultado = parseFloat(resultado);
     console.log(resultado);
     return parseFloat(resultado.toFixed(9));
 }
@@ -63,7 +64,7 @@ function populate(button){
         resultado = operate(operator, firstNumber, secondNumber);
         operator = button.textContent;
         pantalla.value = resultado;
-        firstNumber = resultado;
+        firstNumber = 'no';
         miniPantalla.value = resultado;
     }
     else if (button.classList.contains("delete")){
