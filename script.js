@@ -15,7 +15,6 @@ function divide(n1,n2){
 }
 
 function operate(operator,num1,num2){
-    console.log('operador: ' + operator + " num1: " + num1 + " num2 " + num2);
     let resultado;
     switch(operator){
         case '+':
@@ -32,11 +31,11 @@ function operate(operator,num1,num2){
             break;
     }
     resultado = parseFloat(resultado);
+    console.log('operador: ' + operator + " numA: " + num1 + " numB " + num2 + " RESULTADO = " + resultado);
     return parseFloat(resultado.toFixed(9));
 }
 
 function populate(button){
-    console.log("resultado vale " + resultado);
     if (button.classList.contains("number-button")){
         if(parseFloat(pantalla.value) == resultado){
             console.log("IGUAL A RESULTADO");
