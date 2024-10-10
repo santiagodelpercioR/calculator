@@ -1,57 +1,58 @@
-function sum(array){   // Recibe un array de numeros y devuelve la suma
-    return array.reduce((partialSum, a) => partialSum + a, 0);
+function sum(n1,n2){   // Recibe un array de numeros y devuelve la suma
+    return n1+n2;
 }
 
-function substract(array){
-    return array.slice(1).reduce((acum, actualValue) => acum - actualValue, array[0]);
+function substract(n1,n2){
+    return n1-n2;
 }
 
-function multiply(array){
-    return array.reduce((acum,actualValue) => acum * actualValue, 1);
+function multiply(n1,n2){
+    return n1*n2;
 }
 
-function divide(array){
-    return array.slice(1).reduce((acum,actualValue) => acum / actualValue, array[0]);
+function divide(n1,n2){
+    return n1/n2;
 }
 
 function operate(operator,num1,num2){
+    console.log('operador: ' + operator + " num1: " + num1 + " num2 " + num2);
     let resultado;
     switch(operator){
         case '+':
-            resultado = sum([num1,num2]);
+            resultado = sum(num1,num2);
             break;
         case '-':
-            resultado = substract([num1,num2]);
+            resultado = substract(num1,num2);
             break;
         case 'x':
-            resultado = multiply([num1,num2]);
+            resultado = multiply(num1,num2);
             break;
         case '/':
-            resultado = divide([num1,num2]);
+            resultado = divide(num1,num2);
             break;
     }
     return parseFloat(resultado.toFixed(9));
 }
 
-function populate(button){ // Se clickeo un boton
+/*function populate(button){ // Se clickeo un boton
     if (button.classList.contains("number-button")){
         pantalla.value = pantalla.value + button.textContent;
     }
-    else if (button.classList.contains("operator-button")){
-        if(firstNumber === 'no'){           // no tengo guardado un primer numero
+    else if (button.classList.contains("operator-button")){    //Operator : * / + -
+        if(operator == 0){           // Si no tengo un operador guardado
             firstNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display y lo guardo en una variable PRIMERNUMERO.
             pantalla.value = ''; //borro todo lo que esta en el display
             operator = button.textContent; //guardo el operador en una variable OPERADOR
             miniPantalla.value = firstNumber;
         }
-        else if (firstNumber !== 'no'){
+        else { // Si existe un operador guardado
             secondNumber = parseFloat(pantalla.value);
-            let resultado = operate(operator, firstNumber, secondNumber);
-            operator = button.textContent;
-            pantalla.value = resultado;
-            firstNumber = resultado;
+            console.log(secondNumber);
+            pantalla.value = operate(operator,firstNumber,secondNumber);
+            console.log(button.textContent);
+            operator = 0;
+            populate(button);
             secondNumber = 'no';
-            pantalla.value = '';
             miniPantalla.value = firstNumber;
         }
     }
@@ -60,6 +61,8 @@ function populate(button){ // Se clickeo un boton
             secondNumber = parseFloat(pantalla.value); //agarro todo lo que esta en el display lo guardo en una variable SEGUNDONUMERO.
             pantalla.value = operate(operator, firstNumber, secondNumber);//display.value = calculo(operador,PRIMERNUMERO, SEGUNDONUMERO)
             miniPantalla.value = pantalla.value;
+            firstNumber = pantalla.value;
+            secondNumber = 'no';
         }
     }
     else if (button.classList.contains("delete")){
@@ -78,6 +81,10 @@ function populate(button){ // Se clickeo un boton
             pantalla.value = signo * float;
         }
     }
+}*/
+
+function populate(button){
+
 }
 
 function listeners(){
@@ -123,10 +130,9 @@ function changeCSS(cssFile, cssLinkIndex) {
     document.getElementsByTagName("head").item(cssLinkIndex).replaceChild(newlink, oldlink);
 }
 
-
-let firstNumber = 'no';
+let firstNumber;
 let operator;
-let secondNumber = 'no';
+let secondNumber;
 const pantalla = document.querySelector(".display input");
 pantalla.value = '';
 const miniPantalla = document.querySelector(".minidisplay input");
