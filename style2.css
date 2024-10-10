@@ -1,0 +1,78 @@
+*{
+
+}
+
+body {
+
+}
+
+.calculator {
+
+}
+
+.minidisplay{
+
+}
+
+.minidisplay input,
+.display input {
+
+}
+
+.minidisplay input {
+
+}
+
+.display {
+
+}
+
+.display input {
+
+}
+
+.wrapper {
+
+}
+
+.row {
+
+}
+
+.row button {
+
+}
+
+/* Botón especial para el 0 */
+.row button.zero {
+
+}
+
+/* Efecto al hacer clic */
+button:active {
+
+}
+
+/* Colores específicos para los botones */
+.light-button {
+
+}
+
+.operator-button {
+
+}
+
+.equal {
+
+}
+
+/* Botones de números */
+.number-button {
+
+}
+
+.github{
+}
+.github img {
+
+}

@@ -37,7 +37,7 @@ function operate(operator,num1,num2){
 
 function populate(button){
     if (button.classList.contains("number-button")){
-        if(parseFloat(pantalla.value) == resultado){
+        if(parseFloat(pantalla.value) == resultado || isNaN(pantalla.value)){
             console.log("IGUAL A RESULTADO");
             pantalla.value = '';
             firstNumber = 'no';
